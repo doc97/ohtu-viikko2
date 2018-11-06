@@ -6,15 +6,15 @@ public class Pankki implements PankkiInterface {
 
     public static Pankki getInstance() {
         if (instanssi == null) {
-            instanssi = new Pankki();
+            instanssi = new Pankki(Kirjanpito.getInstance());
         }
 
         return instanssi;
     }
-    private Kirjanpito kirjanpito;
+    private KirjanpitoInterface kirjanpito;
 
-    public Pankki() {
-        kirjanpito = Kirjanpito.getInstance();
+    public Pankki(KirjanpitoInterface kirjanpito) {
+        this.kirjanpito = kirjanpito;
     }
 
     @Override

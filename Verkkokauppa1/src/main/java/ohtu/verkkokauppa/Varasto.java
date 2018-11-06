@@ -8,17 +8,17 @@ public class Varasto implements VarastoInterface {
 
     public static Varasto getInstance() {
         if (instanssi == null) {
-            instanssi = new Varasto();
+            instanssi = new Varasto(Kirjanpito.getInstance());
         }
 
         return instanssi;
     }
     
-    private Kirjanpito kirjanpito;
+    private KirjanpitoInterface kirjanpito;
     private HashMap<Tuote, Integer> saldot;  
     
-    private Varasto() {
-        kirjanpito = Kirjanpito.getInstance();
+    private Varasto(KirjanpitoInterface kirjanpito) {
+        this.kirjanpito = kirjanpito;
         saldot = new HashMap<>();
         alustaTuotteet();
     }
